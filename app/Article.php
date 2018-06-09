@@ -13,7 +13,8 @@ class Article extends Model
         'title',
         'description',
         'author',
-        'published_at'
+        'published_at',
+        'cover_image'
     ];
 
     public function scopePublished($query) {

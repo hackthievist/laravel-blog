@@ -44,6 +44,9 @@ class ArticlesController extends Controller
     }
 
     public function store(ArticlesRequest $request) {
+        $photoName = time() . '.' . $request->cover_image->getClientOriginalExtension();
+        $this->cover_image = $photoName;
+        $request->cover_image->move(public_path('images'), $photoName);
         Article::create($request->all());
         return redirect('articles');
     }

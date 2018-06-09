@@ -7,6 +7,7 @@
 
 <div class="body">
     <p>{{ $article->description }}</p>
+    <img src="{{asset('images')}}">
 </div>
 
 <div>
