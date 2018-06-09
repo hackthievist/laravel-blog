@@ -7,7 +7,7 @@
 
 <div class="body">
     <p>{{ $article->description }}</p>
-    <img src="{{asset('images')}}">
+    <img src="{{asset('images') . "/" . $article->cover_image}}">
 </div>
 
 <div>
