@@ -18,10 +18,10 @@
                 <a class="navbar-brand" href="/articles">Cruds</a>
             </div>
             <ul class="nav navbar-nav">
-                <li class="active"><a href="/articles">All Articles</a></li>
-                <li><a href="/publishedarticles">All My Published Articles</a></li>
-                <li><a href="/unpublishedarticles">All My Unpublished Articles</a></li>
-                <li><a href="/articles/create">Create Article</a></li>
+                <li class="{{ active('articles.index') }}"><a href="/articles">All Articles</a></li>
+                <li class="{{ active('published') }}"><a href="/published">My Published Articles</a></li>
+                <li class="{{ active('unpublished') }}"><a href="/unpublished">My Unpublished Articles</a></li>
+                <li class="{{ active('articles.create') }}"><a href="/articles/create">Create New Article</a></li>
             </ul>
 
             <!-- dropdown not working -->
