@@ -18,6 +18,7 @@ Route::get('/', function () {
 Route::group(['middleware' => ['auth']], function() {
     // uses 'auth' middleware
     Route::resource('articles','ArticlesController');
+    Route::get('articles/{id}/delete', ['uses' => 'ArticlesController@destroy', 'as' => 'delete']);
     Route::get('publishedarticles', 'ArticlesController@published');
     Route::get('unpublishedarticles', 'ArticlesController@unpublished');
 });

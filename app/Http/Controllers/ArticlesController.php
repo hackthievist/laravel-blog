@@ -8,6 +8,7 @@ use Auth;
 use Carbon\Carbon;
 use App\Http\Requests\ArticlesRequest;
 use Illuminate\Http\Request;
+use Intervention\Image\Facades\Image;
 
 class ArticlesController extends Controller
 {
@@ -45,6 +46,7 @@ class ArticlesController extends Controller
 
     public function store(ArticlesRequest $request) {
         $photoName = time() . '.' . $request->cover_image->getClientOriginalExtension();
+        Image::make($request->cover_image)->resize(340, 340)->save();
         $request->cover_image->move(public_path('images'), $photoName);
         $article = Article::create($request->all());
         $article->cover_image = $photoName;
