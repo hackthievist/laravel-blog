@@ -45,8 +45,9 @@ class ArticlesController extends Controller
     }
 
     public function store(ArticlesRequest $request) {
+        dd($request->cover_image);
         $photoName = time() . '.' . $request->cover_image->getClientOriginalExtension();
-        Image::make($request->cover_image)->resize(340, 340)->save();
+        Image::make($request->cover_image)->resize(500, 500)->save();
         $request->cover_image->move(public_path('images'), $photoName);
         $article = Article::create($request->all());
         $article->cover_image = $photoName;
@@ -62,7 +63,12 @@ class ArticlesController extends Controller
 
     public function update($id, ArticlesRequest $request) {
         $article = Article::findOrFail($id);
+        $photoName = time() . '.' . $request->cover_image->getClientOriginalExtension();
+        Image::make($request->cover_image)->resize(500, 500)->save();
+        $request->cover_image->move(public_path('images'), $photoName);
         $article->update($request->all());
+        $article->cover_image = $photoName;
+        $article->save();
         return redirect('articles');
     }
 

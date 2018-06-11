@@ -6,8 +6,11 @@
 <hr>
 
 <div class="body">
-    <p>{{ $article->description }}</p>
-    <img src="{{asset('images') . "/" . $article->cover_image}}">
+    <center><img src="{{asset('images') . "/" . $article->cover_image}}"></center>
+    <hr>
+    <div class="body">
+        <p>{{ $article->description }}</p>
+    </div>
 </div>
 
 <br>

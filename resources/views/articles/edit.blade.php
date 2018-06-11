@@ -6,7 +6,8 @@
 
 <hr>
 
-{!! Form::model($article, ['action' => ['ArticlesController@update', $article->id], 'method' => 'patch']) !!}
+{!! Form::model($article, ['action' => ['ArticlesController@update', $article->id], 'method' => 'patch',
+                           'files' => 'true', 'enctype' => 'multipart/form-data']) !!}
 
 @include('articles.form', ['submitButtonText' => 'Update Article'])
 
