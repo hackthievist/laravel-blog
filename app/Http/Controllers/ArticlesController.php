@@ -9,6 +9,7 @@ use Carbon\Carbon;
 use App\Http\Requests\ArticlesRequest;
 use Illuminate\Http\Request;
 use Intervention\Image\Facades\Image;
+use \File;
 
 class ArticlesController extends Controller
 {
@@ -45,7 +46,6 @@ class ArticlesController extends Controller
     }
 
     public function store(ArticlesRequest $request) {
-        dd($request->cover_image);
         $photoName = time() . '.' . $request->cover_image->getClientOriginalExtension();
         Image::make($request->cover_image)->resize(500, 500)->save();
         $request->cover_image->move(public_path('images'), $photoName);
@@ -74,8 +74,15 @@ class ArticlesController extends Controller
 
     public function destroy($id) {
         $article = Article::findOrFail($id);
+        $cover_image = $article->cover_image;
+        $path = public_path('images/') . $cover_image;
+        File::delete($path);
         $article->delete();
         return redirect('articles');
+    }
+
+    public function deleteAll() {
+        Article::truncate();
     }
 
 }

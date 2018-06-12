@@ -22,13 +22,4 @@
 
 <br>
 
-{{-- <div>
-    {!! Form::open([
-        'method' => 'DELETE',
-        'action' => ['ArticlesController@destroy', $article->id]
-    ]) !!}
-    {!! Form::submit('Delete', ['class' => 'btn btn-danger']) !!}
-</div>
-    {!! Form::close() !!} --}}
-
 @endsection

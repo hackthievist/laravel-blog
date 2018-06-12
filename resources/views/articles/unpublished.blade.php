@@ -2,12 +2,12 @@
 
 @section('content')
 
-<h1>{{ "All Unpublished Articles" }}</h1>
+<h1>{{ "Yet to be Published Articles" }}</h1>
 
 <p>by <b>{{ $username }}</b></p>
 
 <hr>
-
+@if(count($articles) > 0)
 <article>
 
 @foreach($articles as $article)
@@ -17,5 +17,15 @@
         <p><i>{{ Carbon\Carbon::parse($article->published_at) ->diffForHumans() }}</i></p>
     </div>
 @endforeach
+
+</article>
+
+@else
+
+<div class="body">
+    <center><i><h2>No Articles Yet</h2></i></center>
+</div>
+
+@endif
 
 @endsection
